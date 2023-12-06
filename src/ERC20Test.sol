@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.13;
+pragma solidity ^0.8.20;
 
 import { ERC20 } from "../lib/solmate/src/tokens/ERC20.sol";
 import { Owned } from "../lib/solmate/src/auth/Owned.sol";
 
-contract MeetupCoin is ERC20, Owned {
-    constructor() ERC20("MeetupCoin", "MTC", 18) Owned(msg.sender) {}
+contract ERC20Test is ERC20, Owned {
+    constructor() ERC20("ERC20Test", "MTC", 18) Owned(msg.sender) {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);

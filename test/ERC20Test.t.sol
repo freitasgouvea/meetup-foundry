@@ -1,22 +1,22 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity 0.8.13;
+pragma solidity ^0.8.20;
 
 import { Test, console2 } from "forge-std/Test.sol";
-import { MeetupCoin } from "../src/MeetupCoin.sol";
+import { ERC20Test } from "../src/ERC20Test.sol";
 
 interface Events {
     event Transfer(address indexed from, address indexed to, uint256 value);
 }
 
-contract MeetupCoinTest is Test, Events {
-    MeetupCoin public coin;
+contract ERC20TestTest is Test, Events {
+    ERC20Test public coin;
 
     address admin = address(0x123);
     address alice = address(0x456);
     address bob = address(0x789);
 
     function setUp() public {
-        coin = new MeetupCoin();
+        coin = new ERC20Test();
         coin.transferOwnership(admin);
     }
 
