@@ -13,6 +13,9 @@ contract PaymentMock is Ownable, Pausable, ReentrancyGuard {
     Vault public vault;
     CCIPAdapter public adapter;
 
+    /// Fuji testnet chain selector
+    uint64 public constant CURRENT_CHAIN = 14767482510784806043;
+
     constructor (address _vaultAddress, address _adapter) Ownable(msg.sender) {
         vault = Vault(_vaultAddress);
         adapter = CCIPAdapter(_adapter);
@@ -29,6 +32,11 @@ contract PaymentMock is Ownable, Pausable, ReentrancyGuard {
         require(_amount > 0, "PaymentMock: _amount must be greater than zero");
         require(IERC20(_token).balanceOf(address(vault)) >= _amount, "PaymentMock: vault balance must be greater than or equal to _amount");
         require(adapter.allowlistedChains(_destinationChainSelector), "PaymentMock: destination chain is not allowlisted");
+
+        if (_destinationChainSelector == CURRENT_CHAIN) {
+            vault.pay(_token, _amount, _to);
+            return;
+        }
 
         vault.pay(_token,_amount, address(this));
         IERC20(_token).approve(address(adapter), _amount);

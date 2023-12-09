@@ -21,6 +21,7 @@ contract CCIPAdapter is Ownable, Pausable, ReentrancyGuard {
 
     bool public initialized;
 
+    /// Fuji testnet chain selector
     uint64 public constant CURRENT_CHAIN = 14767482510784806043;
 
     mapping(uint64 => bool) public allowlistedChains;
