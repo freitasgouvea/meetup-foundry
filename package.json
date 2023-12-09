@@ -1,0 +1,27 @@
+{
+  "name": "meetup-foundry",
+  "version": "1.0.0",
+  "description": "**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freitasgouvea/meetup-foundry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freitasgouvea/meetup-foundry/issues"
+  },
+  "homepage": "https://github.com/freitasgouvea/meetup-foundry#readme",
+  "devDependencies": {
+    "@chainlink/contracts": "^0.6.1",
+    "@chainlink/contracts-ccip": "^0.7.3"
+  }
+}
