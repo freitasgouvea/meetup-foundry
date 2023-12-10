@@ -102,7 +102,7 @@ contract CCIPAdapter is Ownable, Pausable, ReentrancyGuard {
         require(_amount > 0, "CCIPAdapter: _amount must be greater than zero");
         require(_to != address(0), "CCIPAdapter: _to address cannot be zero");
         require(_token != address(0), "CCIPAdapter: _token address cannot be zero");
-        require( IERC20(_token).transfer(address(this), _amount), "CCIPAdapter: transfer failed");
+        require( IERC20(_token).transferFrom(paymentContractAddress, address(this), _amount), "CCIPAdapter: transfer failed");
 
         Client.EVM2AnyMessage memory evm2AnyMessage = _buildCCIPMessage(
             _to,
